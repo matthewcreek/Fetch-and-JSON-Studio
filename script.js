@@ -8,8 +8,11 @@ window.addEventListener('load', function () {
         const json = await astronautData.json();
 
         astronautNum.innerHTML = `Number of Astronauts: ${json.length}`
+
+        json.sort(function(a,b) {
+            return a.hoursInSpace < b.hoursInSpace ? 1 : -1;
+        });
         
-        console.log(json[0].hoursInSpace)
         for (i = 0; i < json.length; i++) {
             if (json[i].active !== true) {
                 containerAstro.innerHTML += `
