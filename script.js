@@ -1,11 +1,14 @@
 // TODO: add code here
 window.addEventListener('load', function () {
     const containerAstro = document.getElementById('container');
+    const astronautNum = document.getElementById('astronautNum');
 
     async function getAstronautData() {
         const astronautData = await fetch('https://handlers.education.launchcode.org/static/astronauts.json');
         const json = await astronautData.json();
 
+        astronautNum.innerHTML = `Number of Astronauts: ${json.length}`
+        
         console.log(json[0].hoursInSpace)
         for (i = 0; i < json.length; i++) {
             if (json[i].active !== true) {
